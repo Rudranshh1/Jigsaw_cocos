@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 12mask
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: eb9b0e936abf54e38ba53c915517a42d, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 78669420248fc43b1aec355ba77c0dd1: 21300000
+    - eea7ae50682b743c6a2919639d85b2b3: 21300000
+    - 1a74b3411a6c149e08272a0648114080: 21300000
+    - e13564d1ad4f34d2785a7f5838b592de: 21300000
+    - dad8716445a90427280b5226ab6a5c62: 21300000
+    - f059ada69e8334774b67d8563b2a62de: 21300000
+    - 8f0f4d081f08f44f49303d1e113a7c26: 21300000
+    - 4462f4387706f4ef58b1ecace04d6d64: 21300000
+    - 5cd68089ef7424353b3749f55dc4e1c2: 21300000
+    - 6b271f2c05927446c9136b610f28a6cf: 21300000
+    - 49bb9e5dcdf1b45f4b369a81a07491e7: 21300000
+    - 7edcbc9f81f25488fa923f8a259f5b77: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 78669420248fc43b1aec355ba77c0dd1, type: 3}
+  - {fileID: 21300000, guid: eea7ae50682b743c6a2919639d85b2b3, type: 3}
+  - {fileID: 21300000, guid: 1a74b3411a6c149e08272a0648114080, type: 3}
+  - {fileID: 21300000, guid: e13564d1ad4f34d2785a7f5838b592de, type: 3}
+  - {fileID: 21300000, guid: dad8716445a90427280b5226ab6a5c62, type: 3}
+  - {fileID: 21300000, guid: f059ada69e8334774b67d8563b2a62de, type: 3}
+  - {fileID: 21300000, guid: 8f0f4d081f08f44f49303d1e113a7c26, type: 3}
+  - {fileID: 21300000, guid: 4462f4387706f4ef58b1ecace04d6d64, type: 3}
+  - {fileID: 21300000, guid: 5cd68089ef7424353b3749f55dc4e1c2, type: 3}
+  - {fileID: 21300000, guid: 6b271f2c05927446c9136b610f28a6cf, type: 3}
+  - {fileID: 21300000, guid: 49bb9e5dcdf1b45f4b369a81a07491e7, type: 3}
+  - {fileID: 21300000, guid: 7edcbc9f81f25488fa923f8a259f5b77, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - 12_001_mask
+  - 12_011_mask
+  - 12_005_mask
+  - 12_003_mask
+  - 12_009_mask
+  - 12_010_mask
+  - 12_002_mask
+  - 12_008_mask
+  - 12_004_mask
+  - 12_000_mask
+  - 12_006_mask
+  - 12_007_mask
+  m_RenderDataMap: {}
+  m_Tag: 12mask
+  m_IsVariant: 0
