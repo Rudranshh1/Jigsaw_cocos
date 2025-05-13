@@ -1,0 +1,43 @@
+# Cocos Creator 3.x specific
+local/
+temp/
+library/
+build/
+settings/
+log/
+native/  # Ignore native builds
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Node modules (if using npm)
+node_modules/
+
+# Environment and user-specific files
+*.bak
+*.tmp
+*.swp
+*.swo
+*.log
+
+# VS Code settings (optional)
+.vscode/
+
+# Compiled/intermediate files
+*.pyc
+*.pyo
+*.exe
+*.dll
+*.class
+*.obj
+*.o
+*.so
+
+# Mac system files
+.AppleDouble
+.LSOverride
+Icon
+
+# Unity-style metas (if you manually add them)
+*.meta
