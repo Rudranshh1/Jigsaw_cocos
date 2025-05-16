@@ -1,0 +1,59 @@
+{
+  "__version__": "1.0.1",
+  "builder": {
+    "common": {
+      "buildPath": "project://build",
+      "outputName": "android",
+      "mainBundleCompressionType": "merge_dep",
+      "platform": "android",
+      "startScene": "fda6a7a5-cfbf-4f9c-b0be-eeb707175566",
+      "scenes": [
+        {
+          "url": "db://assets/Assets/Scenes/HomeScene.scene",
+          "uuid": "fda6a7a5-cfbf-4f9c-b0be-eeb707175566"
+        },
+        {
+          "url": "db://assets/Assets/Scenes/GameplayScene.scene",
+          "uuid": "0ef90f5b-6c07-4804-9d7e-f3cfb93d6916"
+        }
+      ]
+    },
+    "options": {
+      "android": {
+        "packageName": "com.dumadu.jigsaw",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": true,
+          "upsideDown": false,
+          "landscapeRight": false,
+          "landscapeLeft": false
+        },
+        "apiLevel": 26,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": true,
+        "keystorePath": "",
+        "keystorePassword": "",
+        "keystoreAlias": "",
+        "keystoreAliasPassword": "",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "__version__": "1.0.1",
+  "builder": {
+    "common": {
+      "polyfills": {
+        "asyncFunctions": true
+      },
+      "scenes": [
+        {
+          "url": "db://assets/Assets/Scenes/GameplayScene.scene",
+          "uuid": "0ef90f5b-6c07-4804-9d7e-f3cfb93d6916"
+        },
+        {
+          "url": "db://assets/Assets/Scenes/HomeScene.scene",
+          "uuid": "fda6a7a5-cfbf-4f9c-b0be-eeb707175566"
+        }
+      ],
+      "startScene": "fda6a7a5-cfbf-4f9c-b0be-eeb707175566",
+      "buildPath": "project://build",
+      "outputName": "web-desktop-001",
+      "mainBundleCompressionType": "merge_dep",
+      "platform": "web-desktop"
+    },
+    "taskOptionsMap": {
+      "1747373644880": {
+        "useWebGPU": false,
+        "resolution": {
+          "designWidth": 1280,
+          "designHeight": 960
+        },
+        "__version__": "1.0.1"
+      },
+      "1747374394649": {
+        "useWebGPU": false,
+        "resolution": {
+          "designWidth": 1280,
+          "designHeight": 960
+        },
+        "__version__": "1.0.1"
+      }
+    },
+    "__version__": "1.3.9"
+  }
+}

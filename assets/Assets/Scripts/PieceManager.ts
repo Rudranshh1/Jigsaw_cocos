@@ -1,25 +1,30 @@
-import { _decorator,UIOpacity ,Sprite ,Color,tween, Component,EventTouch, Node,UITransform, Vec2,Input,Vec3 , Contact2DType, Collider2D, IPhysics2DContact ,PhysicsSystem2D, color, Vec4} from 'cc';
+import { _decorator,UIOpacity ,Sprite ,Color,tween, Component,EventTouch, Node,UITransform, Vec2,Input,Vec3 , Contact2DType, Collider2D, IPhysics2DContact ,PhysicsSystem2D, color, Vec4, Game} from 'cc';
+import { GameManager } from './GameManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('PieceManager')
 export class PieceManager extends Component {
     // public static instance: PieceManager = null;
-    private isSelected:boolean = false;
-    private CorrectPos:Vec2 = null;
     private offset = new Vec3();
     private canMove = true;
     private inPuzzleContainer = false;
+    @property(Number)
+    public GirdI:number=0;
+    @property(Number)
+    public GridJ:number=0;
     @property(Node)
     private Container:Node= null;
     @property(Node)
     public PieceHolder:Node = null;
-    private PieceSet = false;
+    public PieceSet = false;
     @property(Boolean)
     private isDragging:boolean = false;
     private uiTransform:UITransform;
     private worldBounds = null;
     private GameStart = false;
     private getout = false;
+    @property(Boolean)
+    private isCorner = false;
      onLoad() {
    
         PhysicsSystem2D.instance.enable = true;
@@ -62,11 +67,15 @@ export class PieceManager extends Component {
         let position = this.node.getPosition();
         if(position.x>-40 && position.y>-40 && position.x<40 && position.y<40)
         {
-           this.node.setPosition(0,0);
+            this.node.setPosition(0,0);
+            this.PieceSet = true;
             this.canMove = false;
             this.PieceHolder.active = false;
-            this.fadeToDarkAndBack();
-            this.PieceSet = true;
+            // this.fadeToDarkAndBack();
+            this.fadePieces();
+            GameManager.instance.CheckComplete();
+            
+
             
         }
     }
@@ -79,13 +88,13 @@ export class PieceManager extends Component {
 
         // Tween color
         tween({ r: startColor.r, g: startColor.g, b: startColor.b, a: startColor.a })
-            .to(0.2, { r: targetColor.r, g: targetColor.g, b: targetColor.b, a: targetColor.a }, {
+            .to(0.35, { r: targetColor.r, g: targetColor.g, b: targetColor.b, a: targetColor.a }, {
                 onUpdate: (val) => {
                     this.node.children[0].getComponent(Sprite).color = new Color(val.r, val.g, val.b, val.a);
                     
                 }
             })
-            .to(0.2, { r: startColor.r, g: startColor.g, b: startColor.b, a: startColor.a }, {
+            .to(0.35, { r: startColor.r, g: startColor.g, b: startColor.b, a: startColor.a }, {
                 onUpdate: (val) => {
                     this.node.children[0].getComponent(Sprite).color = new Color(val.r, val.g, val.b, val.a);
                     
@@ -119,8 +128,9 @@ export class PieceManager extends Component {
     }
 
     update(deltaTime: number) {
-        if(!this.isDragging && this.canMove && !this.inPuzzleContainer)
+        if(!this.isDragging && this.canMove && !this.inPuzzleContainer){
             this.setScrollPosition();
+        }
         if(this.getout && !this.isDragging )
         {
             this.setPiecePosition();
@@ -130,6 +140,11 @@ export class PieceManager extends Component {
             this.getout = false;
         }
     }
+
+    fadePieces(){
+        GameManager.instance.FadePiecesBFS([this.GirdI,this.GridJ]);
+    }
+
     onTriggerEnter(selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact | null) {
         if(otherCollider.node.name =='BG')
         {
@@ -147,6 +162,8 @@ export class PieceManager extends Component {
         }
         
     }
+
+   
     
   
     

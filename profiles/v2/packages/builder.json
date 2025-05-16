@@ -2,5 +2,100 @@
   "__version__": "1.3.9",
   "log": {
     "level": 4
+  },
+  "common": {
+    "polyfills": {
+      "asyncFunctions": true
+    },
+    "scenes": [
+      {
+        "url": "db://assets/Assets/Scenes/HomeScene.scene",
+        "uuid": "fda6a7a5-cfbf-4f9c-b0be-eeb707175566"
+      },
+      {
+        "url": "db://assets/Assets/Scenes/GameplayScene.scene",
+        "uuid": "0ef90f5b-6c07-4804-9d7e-f3cfb93d6916"
+      }
+    ],
+    "startScene": "fda6a7a5-cfbf-4f9c-b0be-eeb707175566",
+    "buildPath": "project://build",
+    "outputName": "web-desktop-001",
+    "mainBundleCompressionType": "merge_dep",
+    "platform": "web-desktop"
+  },
+  "BuildTaskManager": {
+    "taskMap": {
+      "1747374394649": {
+        "type": "build",
+        "id": "1747374394649",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "16-05-2025 11:16:50 build success in 16 s!",
+        "detailMessage": "// ---- build task cocos-service：onAfterCompressSettings ----\r",
+        "options": {
+          "name": "JigsawRamayan",
+          "server": "",
+          "engineModulesConfigKey": "defaultConfig",
+          "platform": "web-desktop",
+          "buildPath": "project://build",
+          "debug": false,
+          "buildMode": "normal",
+          "mangleProperties": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "overwriteProjectSettings": {
+            "includeModules": {
+              "gfx-webgl2": "on",
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting"
+            },
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            }
+          },
+          "nativeCodeBundleMode": "both",
+          "polyfills": {
+            "asyncFunctions": true
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "inlineEnum": true,
+          "useBuiltinServer": false,
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "fda6a7a5-cfbf-4f9c-b0be-eeb707175566",
+          "outputName": "web-desktop-001",
+          "taskName": "web-desktop-001",
+          "scenes": [
+            {
+              "url": "db://assets/Assets/Scenes/GameplayScene.scene",
+              "uuid": "0ef90f5b-6c07-4804-9d7e-f3cfb93d6916"
+            },
+            {
+              "url": "db://assets/Assets/Scenes/HomeScene.scene",
+              "uuid": "fda6a7a5-cfbf-4f9c-b0be-eeb707175566"
+            }
+          ],
+          "wasmCompressionMode": false,
+          "packages": {},
+          "__version__": "1.3.9",
+          "logDest": "project://temp/builder/log/web-desktop5-16-2025 11-16.log"
+        },
+        "time": "5-16-2025 11:16:34",
+        "dirty": false
+      }
+    }
   }
 }
