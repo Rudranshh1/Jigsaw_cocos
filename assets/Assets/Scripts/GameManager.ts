@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab,instantiate, Vec3, UITransform, BoxCollider2D, Game, random,Vec2, Sprite} from 'cc';
+import { _decorator, Component, Node, Prefab,instantiate, Vec3, UITransform, BoxCollider2D, Game, random,Vec2, Sprite, director} from 'cc';
 import { PieceManager } from './PieceManager';
 import { RandomNumberGenerator } from './RandomNumberGenerator';
 import { GameDataCenter } from './GameDataCenter';
@@ -19,11 +19,12 @@ export class GameManager extends Component {
     private Container:Node= null;
     private CornverViewToggle:Boolean= true;
     private TotalPieceSet:number = 0;
-    // first initialize piecePrefab 
-    //  piece into scroll area
-     PieceHeader=null;
+    @property(Node)
+    private ExitPage:Node = null;
+    PieceHeader=null;
     protected onLoad(): void {
         GameManager.instance = this;
+        this.piecePrefab_12 = GameDataCenter.instance.getPrefab();
         this.PieceHeader = instantiate(this.piecePrefab_12);
         this.node.addChild(this.PieceHeader)
         console.log(this.PieceHeader.children.length)
@@ -32,7 +33,7 @@ export class GameManager extends Component {
     }
 
     start() {
-        this.grid = new Array(4).fill(null).map(() => new Array(3).fill(null));
+        this.grid = new Array(GameDataCenter.instance.getLength()).fill(null).map(() => new Array(GameDataCenter.instance.getWidht()).fill(null));
         this.SetPiecePositionToContainer();
     }
     AssignPieceContainer(){
@@ -43,7 +44,7 @@ export class GameManager extends Component {
             this.PieceHeader.children[i].children[0].getComponent(PieceManager).Container = this.Container;
             this.ScrollArea.addChild(pieceHolder);
             const size = this.PieceHeader.children[i].children[0].getComponent(UITransform).contentSize;
-            pieceHolder.getComponent(UITransform).setContentSize(size);
+            pieceHolder.getComponent(UITransform).setContentSize(300,300);
             const pieceManager = this.PieceHeader.children[i].children[0].getComponent(PieceManager);
             pieceManager.PieceHolder = pieceHolder;
             
@@ -53,7 +54,7 @@ export class GameManager extends Component {
         setTimeout(()=>{
             for(let i =this.PieceHeader.children.length-1;i>=0;i--){
                 
-                this.PieceHeader.children[i].children[0].setScale(0.5,0.5);
+                this.PieceHeader.children[i].children[0].setScale(GameDataCenter.instance.getScale(),GameDataCenter.instance.getScale());
                 this.PieceHeader.children[i].children[0].getComponent(PieceManager).setPiecePosition();
                 this.PieceHeader.children[i].children[0].getComponent(BoxCollider2D).enabled = true;
             }
@@ -62,7 +63,7 @@ export class GameManager extends Component {
         },100)
     }
     ShufflePiecePosition(){
-        this.rng = new RandomNumberGenerator(12);
+        this.rng = new RandomNumberGenerator(GameDataCenter.instance.PuzzleGridNumber);
         for(let i =0;i<this.ScrollArea.children.length;i++)
         {
             const j = this.rng.getNext();
@@ -73,8 +74,8 @@ export class GameManager extends Component {
     }
     setPieceGrid(){
         let pieceIndex = 0;
-        for(let i =0;i<4;i++){
-            for(let j = 0;j<3;j++){
+        for(let i =0;i<GameDataCenter.instance.getLength();i++){
+            for(let j = 0;j<GameDataCenter.instance.getWidht();j++){
                 // corner piece 
                 if((i==0 && j==0) || (i==0 && j==this.grid[0].length-1) || (i==this.grid.length-1 && j==0) || (i== this.grid.length-1 && j==this.grid[0].length-1))
                     this.PieceHeader.children[pieceIndex].children[0].getComponent(PieceManager).isCorner = true;
@@ -117,8 +118,8 @@ export class GameManager extends Component {
           }
     }
     DisplayCornerPieces(){
-        for(let i=0;i<4;i++){
-            for(let j=0;j<3;j++){
+        for(let i=0;i<GameDataCenter.instance.getLength();i++){
+            for(let j=0;j<GameDataCenter.instance.getWidht();j++){
                 let isCorner = this.grid[i][j].getComponent(PieceManager).isCorner;
                 let PieceSet = this.grid[i][j].getComponent(PieceManager).PieceSet;
                 if(this.CornverViewToggle)
@@ -143,10 +144,26 @@ export class GameManager extends Component {
 
     CheckComplete(){
         this.TotalPieceSet++;
-        if(this.TotalPieceSet ==12)
+        if(this.TotalPieceSet ==GameDataCenter.instance.winCount())
         {
             console.log('puzzle Completed')
         }
+    }
+
+
+
+    OnClickExitPage(){
+        this.ExitPage.active = true;
+        this.ExitPage.setSiblingIndex(999);
+    }
+    ResumeGame(){
+        this.ExitPage.active = false;
+    }
+    ReturnToHome(){
+        director.loadScene('HomeScene');
+    }
+    RestartGame(){
+        director.loadScene('GameplayScene')
     }
 }
 

@@ -1,5 +1,6 @@
 import { _decorator,UIOpacity ,Sprite ,Color,tween, Component,EventTouch, Node,UITransform, Vec2,Input,Vec3 , Contact2DType, Collider2D, IPhysics2DContact ,PhysicsSystem2D, color, Vec4, Game} from 'cc';
 import { GameManager } from './GameManager';
+import { GameDataCenter } from './GameDataCenter';
 const { ccclass, property } = _decorator;
 
 @ccclass('PieceManager')
@@ -24,7 +25,7 @@ export class PieceManager extends Component {
     private GameStart = false;
     private getout = false;
     @property(Boolean)
-    private isCorner = false;
+    public isCorner = false;
      onLoad() {
    
         PhysicsSystem2D.instance.enable = true;
@@ -38,6 +39,7 @@ export class PieceManager extends Component {
     onTouchStart(event: EventTouch) {
         this.isDragging = true;
         const touchPos = event.getUILocation();
+        this.node.getParent().setSiblingIndex(999);
         const worldPos = new Vec3(touchPos.x, touchPos.y, 0);
         const localPos = this.node.parent.getComponent(UITransform).convertToNodeSpaceAR(worldPos);
 
@@ -74,7 +76,7 @@ export class PieceManager extends Component {
             // this.fadeToDarkAndBack();
             this.fadePieces();
             GameManager.instance.CheckComplete();
-            
+            this.node.getParent().setSiblingIndex(0);
 
             
         }
@@ -135,7 +137,7 @@ export class PieceManager extends Component {
         {
             this.setPiecePosition();
             this.inPuzzleContainer = false;
-            this.node.setScale(0.5,0.5)
+            this.node.setScale(GameDataCenter.instance.getScale(),GameDataCenter.instance.getScale())
             this.PieceHolder.active = true;
             this.getout = false;
         }

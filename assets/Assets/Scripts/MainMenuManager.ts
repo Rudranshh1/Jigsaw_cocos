@@ -1,4 +1,4 @@
-import { _decorator, Component, director, Node,resources,SpriteFrame,Sprite, Scene, UITransform, Layers, Button, EventHandler } from 'cc';
+import { AssetManager,assetManager,_decorator, Component, director, Node,resources,SpriteFrame,Sprite, Scene, UITransform, Layers, Button, EventHandler, Label, path } from 'cc';
 import { GameDataCenter } from './GameDataCenter';
 const { ccclass, property } = _decorator;
 
@@ -11,10 +11,13 @@ export class MainMenuManager extends Component {
     private PuzzleGridSelectionPage:Node = null;
     @property(Node)
     private PuzzleImageContainer:Node = null;
-    // @property(Node)
-    // private PuzzleImageNode:Node = null;
+    @property(Node)
+    private LoadingPage:Node = null;
+   
     protected onLoad(): void {
-        resources.loadDir('JigsawAssets', SpriteFrame, (err, spriteFrames) => {
+     
+
+            resources.loadDir('JigsawAssets', SpriteFrame, (err, spriteFrames) => {
             if (err) {
                 console.error('Failed to load directory:', err);
                 return;
@@ -22,10 +25,10 @@ export class MainMenuManager extends Component {
             
             // spriteFrames is an array of loaded SpriteFrame objects
             console.log('Loaded SpriteFrames:', spriteFrames);
-
             // Process each image (e.g., assign them to sprites, etc.)
             spriteFrames.forEach((spriteFrame, index) => {
-                let newNode = new Node(`ImageNode${index}`);
+                
+                    let newNode = new Node(`ImageNode${index}`);
                 newNode.layer =  Layers.Enum.UI_2D;;
                 const sprite = newNode.addComponent(Sprite);
                 sprite.spriteFrame = spriteFrame;
@@ -37,8 +40,14 @@ export class MainMenuManager extends Component {
                 eventHandler.handler = 'onImageSelected'; // Method name to call
                 eventHandler.customEventData = '';
                 newNode.addComponent(Button).clickEvents.push(eventHandler);
+                
             });
+            this.scheduleOnce(()=>{
+                this.LoadingPage.active = false;
+            },2)
+            
         });
+        
     }
     start() {
         
@@ -55,14 +64,12 @@ export class MainMenuManager extends Component {
     }
 
     onGridSelectionPage(event: Event, customEventData: string){
+        console.log("number gird "+Number(customEventData));
+
         GameDataCenter.instance.PuzzleGridNumber = Number(customEventData)
         director.loadScene("GameplayScene")
     }
     onPlay(){
-        // load images from directory
-        // show images
-        // click image
-        // then show grid
         this.PuzzleImageSelectionPage.active = true;
     }
 }

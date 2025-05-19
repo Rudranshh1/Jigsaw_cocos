@@ -672,9 +672,12 @@
     "__prefab": {
       "__id__": 27
     },
+    "GirdI": 0,
+    "GridJ": 0,
     "Container": null,
     "PieceHolder": null,
     "isDragging": false,
+    "isCorner": false,
     "_id": ""
   },
   {
@@ -1325,9 +1328,12 @@
     "__prefab": {
       "__id__": 59
     },
+    "GirdI": 0,
+    "GridJ": 0,
     "Container": null,
     "PieceHolder": null,
     "isDragging": false,
+    "isCorner": false,
     "_id": ""
   },
   {
@@ -1978,9 +1984,12 @@
     "__prefab": {
       "__id__": 91
     },
+    "GirdI": 0,
+    "GridJ": 0,
     "Container": null,
     "PieceHolder": null,
     "isDragging": false,
+    "isCorner": false,
     "_id": ""
   },
   {
@@ -2631,9 +2640,12 @@
     "__prefab": {
       "__id__": 123
     },
+    "GirdI": 0,
+    "GridJ": 0,
     "Container": null,
     "PieceHolder": null,
     "isDragging": false,
+    "isCorner": false,
     "_id": ""
   },
   {
@@ -3284,9 +3296,12 @@
     "__prefab": {
       "__id__": 155
     },
+    "GirdI": 0,
+    "GridJ": 0,
     "Container": null,
     "PieceHolder": null,
     "isDragging": false,
+    "isCorner": false,
     "_id": ""
   },
   {
@@ -3937,9 +3952,12 @@
     "__prefab": {
       "__id__": 187
     },
+    "GirdI": 0,
+    "GridJ": 0,
     "Container": null,
     "PieceHolder": null,
     "isDragging": false,
+    "isCorner": false,
     "_id": ""
   },
   {
@@ -4590,9 +4608,12 @@
     "__prefab": {
       "__id__": 219
     },
+    "GirdI": 0,
+    "GridJ": 0,
     "Container": null,
     "PieceHolder": null,
     "isDragging": false,
+    "isCorner": false,
     "_id": ""
   },
   {
@@ -5243,9 +5264,12 @@
     "__prefab": {
       "__id__": 251
     },
+    "GirdI": 0,
+    "GridJ": 0,
     "Container": null,
     "PieceHolder": null,
     "isDragging": false,
+    "isCorner": false,
     "_id": ""
   },
   {
@@ -5896,9 +5920,12 @@
     "__prefab": {
       "__id__": 283
     },
+    "GirdI": 0,
+    "GridJ": 0,
     "Container": null,
     "PieceHolder": null,
     "isDragging": false,
+    "isCorner": false,
     "_id": ""
   },
   {
@@ -6549,9 +6576,12 @@
     "__prefab": {
       "__id__": 315
     },
+    "GirdI": 0,
+    "GridJ": 0,
     "Container": null,
     "PieceHolder": null,
     "isDragging": false,
+    "isCorner": false,
     "_id": ""
   },
   {
@@ -7202,9 +7232,12 @@
     "__prefab": {
       "__id__": 347
     },
+    "GirdI": 0,
+    "GridJ": 0,
     "Container": null,
     "PieceHolder": null,
     "isDragging": false,
+    "isCorner": false,
     "_id": ""
   },
   {
@@ -7855,9 +7888,12 @@
     "__prefab": {
       "__id__": 379
     },
+    "GirdI": 0,
+    "GridJ": 0,
     "Container": null,
     "PieceHolder": null,
     "isDragging": false,
+    "isCorner": false,
     "_id": ""
   },
   {

@@ -1,4 +1,4 @@
-import { _decorator,director, Component,Sprite, Node, Game, SpriteFrame } from 'cc';
+import { _decorator,director, Component,Sprite, Node, Game, SpriteFrame, Prefab } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameDataCenter')
@@ -8,8 +8,14 @@ export class GameDataCenter extends Component {
     public PuzzleSprite:SpriteFrame = null;
     @property(Number)
     public PuzzleGridNumber:Number = 0;
-
-
+    @property(Prefab)
+    public Pieces12:Prefab;
+    @property(Prefab)
+    public Pieces42:Prefab;
+    @property(Prefab)
+    public Pieces63:Prefab;
+    @property(Prefab)
+    public Pieces99:Prefab;
     protected onLoad(): void {
         director.addPersistRootNode(this.node);
         if(GameDataCenter.instance == null)
@@ -18,6 +24,50 @@ export class GameDataCenter extends Component {
             GameDataCenter.instance.destroy();
             GameDataCenter.instance = this;
         }
+    }
+    public getScale(){
+        if(this.PuzzleGridNumber == 12)
+            return 0.5;
+        else if(this.PuzzleGridNumber == 42)
+            return 0.5;
+        else if(this.PuzzleGridNumber == 63)
+            return 1;
+        else if(this.PuzzleGridNumber == 99)
+            return 1.2;
+    }
+    public getPrefab(){
+        if(this.PuzzleGridNumber == 12)
+            return this.Pieces12;
+        else if(this.PuzzleGridNumber == 42)
+            return this.Pieces42;
+        else if(this.PuzzleGridNumber == 63)
+            return this.Pieces63;
+        else if(this.PuzzleGridNumber == 99)
+            return this.Pieces99
+    }
+    public getLength(){
+        if(this.PuzzleGridNumber == 12)
+            return 4;
+        if(this.PuzzleGridNumber == 42)
+            return 7;
+        if(this.PuzzleGridNumber == 63)
+            return 9;
+        if(this.PuzzleGridNumber == 99)
+            return 11;
+    }
+    public getWidht(){
+        if(this.PuzzleGridNumber == 12)
+            return 3;
+        if(this.PuzzleGridNumber == 42)
+            return 6;
+        if(this.PuzzleGridNumber == 63)
+            return 7;
+        if(this.PuzzleGridNumber == 99)
+            return 9;
+    }
+
+    public winCount(){
+        return this.PuzzleGridNumber;
     }
 }
 

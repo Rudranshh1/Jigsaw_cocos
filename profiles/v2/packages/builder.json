@@ -19,25 +19,25 @@
     ],
     "startScene": "fda6a7a5-cfbf-4f9c-b0be-eeb707175566",
     "buildPath": "project://build",
-    "outputName": "web-desktop-001",
+    "outputName": "web-mobile",
     "mainBundleCompressionType": "merge_dep",
-    "platform": "web-desktop"
+    "platform": "web-mobile"
   },
   "BuildTaskManager": {
     "taskMap": {
-      "1747374394649": {
+      "1747639775590": {
         "type": "build",
-        "id": "1747374394649",
+        "id": "1747639775590",
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "16-05-2025 11:16:50 build success in 16 s!",
-        "detailMessage": "// ---- build task cocos-service：onAfterCompressSettings ----\r",
+        "message": "19-05-2025 19:12:52 build success in 14 s!",
+        "detailMessage": "// ---- build task cocos-service：onAfterBuild ----\r",
         "options": {
           "name": "JigsawRamayan",
           "server": "",
           "engineModulesConfigKey": "defaultConfig",
-          "platform": "web-desktop",
+          "platform": "web-mobile",
           "buildPath": "project://build",
           "debug": false,
           "buildMode": "normal",
@@ -76,8 +76,8 @@
           "bundleCommonChunk": false,
           "packAutoAtlas": true,
           "startScene": "fda6a7a5-cfbf-4f9c-b0be-eeb707175566",
-          "outputName": "web-desktop-001",
-          "taskName": "web-desktop-001",
+          "outputName": "web-mobile",
+          "taskName": "web-mobile",
           "scenes": [
             {
               "url": "db://assets/Assets/Scenes/GameplayScene.scene",
@@ -91,9 +91,9 @@
           "wasmCompressionMode": false,
           "packages": {},
           "__version__": "1.3.9",
-          "logDest": "project://temp/builder/log/web-desktop5-16-2025 11-16.log"
+          "logDest": "project://temp/builder/log/web-mobile5-19-2025 12-59.log"
         },
-        "time": "5-16-2025 11:16:34",
+        "time": "5-19-2025 19:12:37",
         "dirty": false
       }
     }
