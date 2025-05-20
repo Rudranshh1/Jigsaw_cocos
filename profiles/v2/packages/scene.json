@@ -1377,10 +1377,10 @@
   },
   "game-view": {
     "devicesInfo": {
-      "name": "Lenovo Legion 2 Pro",
-      "type": "device",
-      "width": 360,
-      "height": 820
+      "name": "i18n:scene.game_view.free_aspect",
+      "type": "free",
+      "width": 0,
+      "height": 0
     },
     "fullScreen": true,
     "scaleValue": 74,
