@@ -1899,7 +1899,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": " Piece\n",
+    "_string": " 42 Piece\n",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 100,
@@ -2211,7 +2211,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "12 Piece\n",
+    "_string": "63 Piece\n",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 100,
@@ -2523,7 +2523,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "12 Piece\n",
+    "_string": "99 Piece\n",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 100,
@@ -2835,7 +2835,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "12 Piece\n",
+    "_string": "120 Piece\n",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 100,
@@ -3147,7 +3147,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "12 Piece\n",
+    "_string": "163 Piece\n",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 100,
@@ -3857,6 +3857,10 @@
     },
     "Piece120": {
       "__uuid__": "b23a6e74-199a-4fb8-be36-746abf408e88",
+      "__expectedType__": "cc.Prefab"
+    },
+    "Piece168": {
+      "__uuid__": "5068c98a-66c4-481a-aa87-f7dae9329261",
       "__expectedType__": "cc.Prefab"
     },
     "_id": "5fhKWcpeJOrJXiGYab+HRH"

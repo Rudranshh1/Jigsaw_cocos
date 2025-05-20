@@ -4,6 +4,7 @@
     "filterTypes": [
       "log",
       "error"
-    ]
+    ],
+    "filterType": "error"
   }
 }

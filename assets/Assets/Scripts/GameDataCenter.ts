@@ -41,7 +41,7 @@ export class GameDataCenter extends Component {
         else if(this.PuzzleGridNumber == 120)
             return 1.2;
         else if(this.PuzzleGridNumber == 168)
-            return 1.5;
+            return 1.2;
     }
     public getPrefab(){
         if(this.PuzzleGridNumber == 12)
