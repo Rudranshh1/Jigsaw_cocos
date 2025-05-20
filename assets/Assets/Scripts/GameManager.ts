@@ -21,7 +21,10 @@ export class GameManager extends Component {
     private TotalPieceSet:number = 0;
     @property(Node)
     private ExitPage:Node = null;
+    @property(Node)
+    private PuzzleSprite:Node = null;
     PieceHeader=null;
+    private showSpriteToggle = false;
     protected onLoad(): void {
         GameManager.instance = this;
         this.piecePrefab_12 = GameDataCenter.instance.getPrefab();
@@ -150,7 +153,17 @@ export class GameManager extends Component {
         }
     }
 
-
+    ShowPuzzleSprite(){
+        if(!this.showSpriteToggle){
+            this.PuzzleSprite.getComponent(Sprite).spriteFrame = GameDataCenter.instance.PuzzleSprite;
+            this.PuzzleSprite.active = true;
+            this.PuzzleSprite.setSiblingIndex(999);
+        }
+        else{
+            this.PuzzleSprite.active = false;
+        }
+        this.showSpriteToggle = !this.showSpriteToggle
+    }
 
     OnClickExitPage(){
         this.ExitPage.active = true;

@@ -16,6 +16,10 @@ export class GameDataCenter extends Component {
     public Pieces63:Prefab;
     @property(Prefab)
     public Pieces99:Prefab;
+    @property(Prefab)
+    public Piece120:Prefab;
+    @property(Prefab)
+    public Piece168:Prefab;
     protected onLoad(): void {
         director.addPersistRootNode(this.node);
         if(GameDataCenter.instance == null)
@@ -34,6 +38,10 @@ export class GameDataCenter extends Component {
             return 1;
         else if(this.PuzzleGridNumber == 99)
             return 1.2;
+        else if(this.PuzzleGridNumber == 120)
+            return 1.2;
+        else if(this.PuzzleGridNumber == 168)
+            return 1.5;
     }
     public getPrefab(){
         if(this.PuzzleGridNumber == 12)
@@ -44,6 +52,10 @@ export class GameDataCenter extends Component {
             return this.Pieces63;
         else if(this.PuzzleGridNumber == 99)
             return this.Pieces99
+        else if(this.PuzzleGridNumber == 120)
+            return this.Piece120;
+        else if(this.PuzzleGridNumber == 168)
+            return this.Piece168;
     }
     public getLength(){
         if(this.PuzzleGridNumber == 12)
@@ -54,6 +66,10 @@ export class GameDataCenter extends Component {
             return 9;
         if(this.PuzzleGridNumber == 99)
             return 11;
+        if(this.PuzzleGridNumber == 120)
+            return 12;
+        if(this.PuzzleGridNumber == 168)
+            return 14;
     }
     public getWidht(){
         if(this.PuzzleGridNumber == 12)
@@ -64,6 +80,10 @@ export class GameDataCenter extends Component {
             return 7;
         if(this.PuzzleGridNumber == 99)
             return 9;
+        if(this.PuzzleGridNumber == 120)
+            return 10;
+        if(this.PuzzleGridNumber == 168)
+            return 12;
     }
 
     public winCount(){

@@ -39,5 +39,4 @@ node_modules/
 .LSOverride
 Icon
 
-# Unity-style metas (if you manually add them)
-*.meta
+
