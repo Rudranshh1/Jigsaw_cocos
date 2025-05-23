@@ -49,12 +49,12 @@ export class PieceManager extends Component {
 
     onTouchMove(event: EventTouch) {
         if (!this.isDragging || !this.canMove) return;
-
         const touchPos = event.getUILocation();
         const worldPos = new Vec3(touchPos.x, touchPos.y, 0);
         const localPos = this.node.parent.getComponent(UITransform).convertToNodeSpaceAR(worldPos);
 
         this.node.setPosition(localPos.x + this.offset.x, localPos.y + this.offset.y, 0);
+        
         // this.checkSnap();
     }
 
@@ -135,11 +135,13 @@ export class PieceManager extends Component {
         }
         if(this.getout && !this.isDragging )
         {
+           
             this.setPiecePosition();
             this.inPuzzleContainer = false;
-            this.node.setScale(GameDataCenter.instance.getScale(),GameDataCenter.instance.getScale())
+            this.node.setScale(GameDataCenter.instance.getScale(), GameDataCenter.instance.getScale())
             this.PieceHolder.active = true;
             this.getout = false;
+            
         }
     }
 

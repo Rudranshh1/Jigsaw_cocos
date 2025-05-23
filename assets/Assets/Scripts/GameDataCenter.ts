@@ -1,4 +1,4 @@
-import { _decorator,director, Component,Sprite, Node, Game, SpriteFrame, Prefab } from 'cc';
+import { _decorator,director, Component,Sprite, Node, Game, SpriteFrame, Prefab , tween } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameDataCenter')

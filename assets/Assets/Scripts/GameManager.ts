@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab,instantiate, Vec3, UITransform, BoxCollider2D, Game, random,Vec2, Sprite, director} from 'cc';
+import { _decorator, Component, Node, Prefab,instantiate, Vec3, UITransform, BoxCollider2D, Game, random,Vec2, Sprite, director, tween, UIOpacity} from 'cc';
 import { PieceManager } from './PieceManager';
 import { RandomNumberGenerator } from './RandomNumberGenerator';
 import { GameDataCenter } from './GameDataCenter';
@@ -22,14 +22,28 @@ export class GameManager extends Component {
     @property(Node)
     private ExitPage:Node = null;
     @property(Node)
-    private PuzzleSprite:Node = null;
-    PieceHeader=null;
+    private PuzzleSprite: Node = null;
+    @property(Node)
+    private LvlCmplPnl: Node = null;
+    @property(Node)
+    private PosOfPieces: Node = null;
+
+    @property(UIOpacity)
+    private LvlCmplFader: UIOpacity = null;
+
+    @property(Node)
+    private LvlCmplImg: Node = null;
+
+
+
+   
+    private PieceHeader: Node = null;
     private showSpriteToggle = false;
     protected onLoad(): void {
         GameManager.instance = this;
         this.piecePrefab_12 = GameDataCenter.instance.getPrefab();
         this.PieceHeader = instantiate(this.piecePrefab_12);
-        this.node.addChild(this.PieceHeader)
+        this.PosOfPieces.addChild(this.PieceHeader)
         console.log(this.PieceHeader.children.length)
         let count = 0;
         this.AssignPieceContainer();
@@ -38,6 +52,8 @@ export class GameManager extends Component {
     start() {
         this.grid = new Array(GameDataCenter.instance.getLength()).fill(null).map(() => new Array(GameDataCenter.instance.getWidht()).fill(null));
         this.SetPiecePositionToContainer();
+        
+    
     }
     AssignPieceContainer(){
         for(let i =this.PieceHeader.children.length-1;i>=0;i--){
@@ -47,7 +63,7 @@ export class GameManager extends Component {
             this.PieceHeader.children[i].children[0].getComponent(PieceManager).Container = this.Container;
             this.ScrollArea.addChild(pieceHolder);
             const size = this.PieceHeader.children[i].children[0].getComponent(UITransform).contentSize;
-            pieceHolder.getComponent(UITransform).setContentSize(300,300);
+            pieceHolder.getComponent(UITransform).setContentSize(150,150);
             const pieceManager = this.PieceHeader.children[i].children[0].getComponent(PieceManager);
             pieceManager.PieceHolder = pieceHolder;
             
@@ -110,15 +126,14 @@ export class GameManager extends Component {
             for (const [dx, dy] of directions) {
                 const newX = x + dx;
                 const newY = y + dy;
-        
-                if (newX >= 0 && newX < rows && newY >= 0 && newY < cols && !visited[newX][newY] && this.grid[newX][newY].getComponent(PieceManager).PieceSet ) 
-                {
+
+                if (newX >= 0 && newX < rows && newY >= 0 && newY < cols && !visited[newX][newY] && this.grid[newX][newY].getComponent(PieceManager).PieceSet) {
                     visited[newX][newY] = true;
-                    
+
                     queue.push([newX, newY]);
                 }
             }
-          }
+        }
     }
     DisplayCornerPieces(){
         for(let i=0;i<GameDataCenter.instance.getLength();i++){
@@ -142,14 +157,28 @@ export class GameManager extends Component {
             }
         }
         this.CornverViewToggle = !this.CornverViewToggle
+        
     }
     
 
     CheckComplete(){
         this.TotalPieceSet++;
-        if(this.TotalPieceSet ==GameDataCenter.instance.winCount())
+        if(this.TotalPieceSet == GameDataCenter.instance.winCount())
         {
-            console.log('puzzle Completed')
+            console.log('puzzle Completed');
+            this.PieceHeader.active = false;
+
+            this.LvlCmplPnl.active = true;
+            this.LvlCmplImg.getComponent(Sprite).spriteFrame = GameDataCenter.instance.PuzzleSprite; 
+            tween(this.LvlCmplImg)
+                .to(0.5, { scale: new Vec3(0.6, 0.6, 0.6) })
+                .call(() => {
+                    tween(this.LvlCmplFader)
+                        .to(0.2, { opacity: 255 })
+                        .start();
+                })
+                .start();
+
         }
     }
 
@@ -157,7 +186,7 @@ export class GameManager extends Component {
         if(!this.showSpriteToggle){
             this.PuzzleSprite.getComponent(Sprite).spriteFrame = GameDataCenter.instance.PuzzleSprite;
             this.PuzzleSprite.active = true;
-            this.PuzzleSprite.setSiblingIndex(999);
+            //this.PuzzleSprite.setSiblingIndex(999);
         }
         else{
             this.PuzzleSprite.active = false;
@@ -166,11 +195,23 @@ export class GameManager extends Component {
     }
 
     OnClickExitPage(){
-        this.ExitPage.active = true;
-        this.ExitPage.setSiblingIndex(999);
+        //this.ExitPage.active = true;
+        //this.ExitPage.setSiblingIndex(999);
+
+        tween(this.ExitPage)
+            .to(0.2, { scale: new Vec3(1, 1.2, 1) })
+            .call(() => {
+                tween(this.ExitPage)
+                    .to(0.1, { scale: new Vec3(1, 1, 1) })
+                    .start(); // Make sure to start the inner tween
+            })
+            .start();
     }
     ResumeGame(){
-        this.ExitPage.active = false;
+        //this.ExitPage.active = false;
+        tween(this.ExitPage)
+            .to(0.2, { scale: new Vec3(1, 0, 1) })
+            .start();
     }
     ReturnToHome(){
         director.loadScene('HomeScene');
@@ -178,6 +219,12 @@ export class GameManager extends Component {
     RestartGame(){
         director.loadScene('GameplayScene')
     }
+
+    ReturnToImages() {
+        localStorage.setItem("GoToHome", "2");
+        this.ReturnToHome();
+    }
+
 }
 
 
