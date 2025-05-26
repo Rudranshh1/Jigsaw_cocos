@@ -27,14 +27,15 @@ export class GameManager extends Component {
     private LvlCmplPnl: Node = null;
     @property(Node)
     private PosOfPieces: Node = null;
-
+    @property(Node)
+    private BG:Node = null;
     @property(UIOpacity)
     private LvlCmplFader: UIOpacity = null;
 
     @property(Node)
     private LvlCmplImg: Node = null;
 
-
+    public GameStart:boolean = false;
 
    
     private PieceHeader: Node = null;
@@ -52,7 +53,6 @@ export class GameManager extends Component {
     start() {
         this.grid = new Array(GameDataCenter.instance.getLength()).fill(null).map(() => new Array(GameDataCenter.instance.getWidht()).fill(null));
         this.SetPiecePositionToContainer();
-        
     
     }
     AssignPieceContainer(){
@@ -63,7 +63,7 @@ export class GameManager extends Component {
             this.PieceHeader.children[i].children[0].getComponent(PieceManager).Container = this.Container;
             this.ScrollArea.addChild(pieceHolder);
             const size = this.PieceHeader.children[i].children[0].getComponent(UITransform).contentSize;
-            pieceHolder.getComponent(UITransform).setContentSize(150,150);
+            pieceHolder.getComponent(UITransform).setContentSize(200,200);
             const pieceManager = this.PieceHeader.children[i].children[0].getComponent(PieceManager);
             pieceManager.PieceHolder = pieceHolder;
             
@@ -79,7 +79,10 @@ export class GameManager extends Component {
             }
             this.setPieceGrid();
             this.ShufflePiecePosition();
+            this.BG.getComponent(BoxCollider2D).enabled = true;
         },100)
+
+        
     }
     ShufflePiecePosition(){
         this.rng = new RandomNumberGenerator(GameDataCenter.instance.PuzzleGridNumber);

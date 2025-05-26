@@ -366,7 +366,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0,
+      "y": 113.103,
       "z": 0
     },
     "_lrot": {
@@ -422,7 +422,7 @@
     "node": {
       "__id__": 7
     },
-    "_enabled": true,
+    "_enabled": false,
     "__prefab": null,
     "tag": 0,
     "_group": 1,
@@ -1063,7 +1063,7 @@
     "_horizontalDirection": 0,
     "_constraint": 1,
     "_constraintNum": 1,
-    "_affectedByScale": true,
+    "_affectedByScale": false,
     "_isAlign": false,
     "_id": "bdAdjG+cFK6quWa2xWl6NC"
   },
@@ -1446,7 +1446,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 97.656,
+      "y": 205.65599999999995,
       "z": 0
     },
     "_lrot": {
@@ -5131,6 +5131,9 @@
     },
     "PosOfPieces": {
       "__id__": 36
+    },
+    "BG": {
+      "__id__": 7
     },
     "LvlCmplFader": {
       "__id__": 126

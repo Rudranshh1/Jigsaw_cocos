@@ -55,7 +55,7 @@ export class MainMenuManager extends Component {
                     if (localStorage.getItem("GoToHome") == "2") {
                         //this.Home.active = false;
                         //this.PuzzleImageSelectionPage.active = true;
-                        this.onplay();
+                        this.onPlay();
                         localStorage.setItem("GoToHome", "0");
 
                     }
@@ -69,7 +69,7 @@ export class MainMenuManager extends Component {
     start() {
 
         // Get screen dimensions and multiply by 3
-        this.ScreenHeight = screen.windowSize.height * 3; //
+        this.ScreenHeigth = screen.windowSize.height * 3; //
 
         // Move both pages off-screen to the right
         this.ScreenWidth = screen.windowSize.width * 3;
@@ -84,7 +84,7 @@ export class MainMenuManager extends Component {
 
         this.PuzzleImageSelectionPage.getComponent(Widget).enabled = true;
         this.PuzzleGridSelectionPage.getComponent(Widget).enabled = true;
-        console.log(`Screen Width x3: ${this.ScreenWidth}, Screen Height x3: ${this.ScreenHeight}`);
+        console.log(`Screen Width x3: ${this.ScreenWidth}, Screen Height x3: ${this.ScreenHeigth}`);
     }
 
 

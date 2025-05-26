@@ -33,7 +33,7 @@ export class GameDataCenter extends Component {
         if(this.PuzzleGridNumber == 12)
             return 0.5;
         else if(this.PuzzleGridNumber == 42)
-            return 0.5;
+            return 0.7;
         else if(this.PuzzleGridNumber == 63)
             return 1;
         else if(this.PuzzleGridNumber == 99)
