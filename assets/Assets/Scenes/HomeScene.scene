@@ -1324,7 +1324,7 @@
     "_enabled": true,
     "__prefab": null,
     "bounceDuration": 0.23,
-    "brake": 0.75,
+    "brake": 0.1,
     "elastic": true,
     "inertia": true,
     "horizontal": false,

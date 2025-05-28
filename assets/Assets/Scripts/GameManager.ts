@@ -32,8 +32,11 @@ export class GameManager extends Component {
     @property(UIOpacity)
     private LvlCmplFader: UIOpacity = null;
 
+
     @property(Node)
     private LvlCmplImg: Node = null;
+    @property(Node)
+    private Next: Node = null;
 
     public GameStart:boolean = false;
 
@@ -51,8 +54,22 @@ export class GameManager extends Component {
     }
 
     start() {
+
+        
         this.grid = new Array(GameDataCenter.instance.getLength()).fill(null).map(() => new Array(GameDataCenter.instance.getWidht()).fill(null));
         this.SetPiecePositionToContainer();
+
+        if (GameDataCenter.instance.ArrayIndex == GameDataCenter.instance.spriteArray.length - 1) {
+            this.Next.active = false;
+        }
+        else {
+            this.Next.active = true;
+        }
+        setTimeout(() => {
+            this.ExitPage.setScale(new Vec3(1, 0, 1));
+            const opc = this.ExitPage.getComponent(UIOpacity);
+            opc = 255;
+        },500);
     
     }
     AssignPieceContainer(){
@@ -69,6 +86,7 @@ export class GameManager extends Component {
             
         }
     }
+
     SetPiecePositionToContainer(){
         setTimeout(()=>{
             for(let i =this.PieceHeader.children.length-1;i>=0;i--){
@@ -81,9 +99,18 @@ export class GameManager extends Component {
             this.ShufflePiecePosition();
             this.BG.getComponent(BoxCollider2D).enabled = true;
         },100)
-
         
     }
+
+    MoveAll2Canvas() {
+        for (let i = this.PieceHeader.children.length - 1; i >= 0; i--) {
+
+            this.PieceHeader.children[i].children[0].setScale(GameDataCenter.instance.getScale(), GameDataCenter.instance.getScale());
+            this.PieceHeader.children[i].children[0].getComponent(PieceManager).SetRandomPositions(i);
+        }
+    }
+    
+
     ShufflePiecePosition(){
         this.rng = new RandomNumberGenerator(GameDataCenter.instance.PuzzleGridNumber);
         for(let i =0;i<this.ScrollArea.children.length;i++)
@@ -220,12 +247,17 @@ export class GameManager extends Component {
         director.loadScene('HomeScene');
     }
     RestartGame(){
-        director.loadScene('GameplayScene')
+        director.loadScene('GameplayScene');
     }
 
     ReturnToImages() {
         localStorage.setItem("GoToHome", "2");
         this.ReturnToHome();
+    }
+
+    NextBtn() {
+        GameDataCenter.instance.LoadNextSSprite();
+        director.loadScene('GameplayScene');
     }
 
 }

@@ -19,7 +19,9 @@ export class GameDataCenter extends Component {
     @property(Prefab)
     public Piece120:Prefab;
     @property(Prefab)
-    public Piece168:Prefab;
+    public Piece168: Prefab;
+    public spriteArray: SpriteFrame[] = [];
+    public ArrayIndex: number;
     protected onLoad(): void {
         director.addPersistRootNode(this.node);
         if(GameDataCenter.instance == null)
@@ -89,5 +91,12 @@ export class GameDataCenter extends Component {
     public winCount(){
         return this.PuzzleGridNumber;
     }
+
+    public LoadNextSSprite() {
+        this.ArrayIndex += 1;
+        this.PuzzleSprite = this.spriteArray[this.ArrayIndex];
+    }
+    
+
 }
 

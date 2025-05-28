@@ -19,7 +19,7 @@ export class MainMenuManager extends Component {
     private ScreenWidth: number = 0;
     private ScreenHeigth: number = 0;
     
-   
+    private spriteArray: SpriteFrame[] = [];
     protected onLoad(): void {
 
         
@@ -31,9 +31,12 @@ export class MainMenuManager extends Component {
                     return;
                 }
 
+
+                GameDataCenter.instance.spriteArray = spriteFrames;
                 // spriteFrames is an array of loaded SpriteFrame objects
                 console.log('Loaded SpriteFrames:', spriteFrames);
                 // Process each image (e.g., assign them to sprites, etc.)
+                let index = 0;
                 spriteFrames.forEach((spriteFrame, index) => {
 
                     let newNode = new Node(`ImageNode${index}`);
@@ -46,11 +49,13 @@ export class MainMenuManager extends Component {
                     eventHandler.target = this.node; // The node where the script with the handler function is attached
                     eventHandler.component = 'MainMenuManager'; // Must match this script class name
                     eventHandler.handler = 'onImageSelected'; // Method name to call
-                    eventHandler.customEventData = '';
+                    eventHandler.customEventData = "" + index;
                     newNode.addComponent(Button).clickEvents.push(eventHandler);
+                    index++;
 
                 });
                 this.scheduleOnce(() => {
+                    console.log("the lenggth of sprites : " + this.spriteArray.length);
                     this.FadeOutLoadPnl();
                     if (localStorage.getItem("GoToHome") == "2") {
                         //this.Home.active = false;
@@ -95,6 +100,8 @@ export class MainMenuManager extends Component {
         const targetNode = event.target as unknown as Node;
         const selectedSpriteFrame = targetNode.getComponent(Sprite).spriteFrame;
         GameDataCenter.instance.PuzzleSprite = selectedSpriteFrame;
+        GameDataCenter.instance.ArrayIndex = parseInt(customEventData);
+        console.log("the index of selected sprite " + GameDataCenter.instance.ArrayIndex);
         //this.PuzzleGridSelectionPage.active = true;
 
         tween(this.PuzzleGridSelectionPage)

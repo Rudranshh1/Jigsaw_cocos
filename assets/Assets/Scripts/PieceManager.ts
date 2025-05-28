@@ -1,4 +1,4 @@
-import { _decorator,UIOpacity ,Sprite ,Color,tween, Component,EventTouch, Node,UITransform, Vec2,Input,Vec3 , Contact2DType, Collider2D, IPhysics2DContact ,PhysicsSystem2D, color, Vec4, Game} from 'cc';
+import { _decorator,UIOpacity ,Sprite ,Color,tween, Component,EventTouch, Node,UITransform, Vec2,Input,Vec3 , Contact2DType, Collider2D, IPhysics2DContact ,PhysicsSystem2D, color, Vec4, Game ,screen} from 'cc';
 import { GameManager } from './GameManager';
 import { GameDataCenter } from './GameDataCenter';
 const { ccclass, property } = _decorator;
@@ -24,7 +24,20 @@ export class PieceManager extends Component {
     private worldBounds = null;
     private GameStart = false;
     private getout = false;
-    @property(Boolean)
+    @property(Boolean) br
+
+
+    private minX: number;
+    private minY: number;
+    private maxX: number;
+    private maxY: number;
+
+    
+       
+
+    
+   
+
     public isCorner = false;
      onLoad() {
    
@@ -32,7 +45,14 @@ export class PieceManager extends Component {
         this.node.on(Node.EventType.TOUCH_START, this.onTouchStart, this);
         this.node.on(Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
         this.node.on(Node.EventType.TOUCH_END, this.onTouchEnd, this);
-        this.node.on(Node.EventType.TOUCH_CANCEL, this.onTouchEnd, this); // optional
+         this.node.on(Node.EventType.TOUCH_CANCEL, this.onTouchEnd, this); // optional
+
+         this.minX = screen.windowSize.width / 1080 * 100;
+         this.maxX = screen.windowSize.width / 1080 * 350;
+         this.minY = screen.windowSize.height / 1920 * 200;
+         this.maxY = screen.windowSize.height / 1920 * 600;
+
+         console.log("min: " + this.minX + " " + this.maxX + " y: " + this.minY + " " + this.maxY);
 
     }
     
@@ -58,6 +78,8 @@ export class PieceManager extends Component {
         // this.checkSnap();
     }
 
+
+
     onTouchEnd(event: EventTouch) {
         this.isDragging = false;
         this.checkSnap();
@@ -77,7 +99,6 @@ export class PieceManager extends Component {
             this.fadePieces();
             GameManager.instance.CheckComplete();
             this.node.getParent().setSiblingIndex(0);
-
             
         }
     }
@@ -104,14 +125,40 @@ export class PieceManager extends Component {
             })
             .start();
     }
-    setPiecePosition(){
-        
-        const newPosition = this.PieceHolder.worldPosition // New position for the node (x, y, z)
-        tween(this.node)
-        .to(0.2, { worldPosition: newPosition }, { easing: 'sineOut' }) // 0.5 seconds, with easing
-        .start();
-        
+
+    setPiecePosition() {
+        if (this.PieceSet == false) {
+            const newPosition = this.PieceHolder.worldPosition // New position for the node (x, y, z)
+            tween(this.node)
+                .to(0.2, { worldPosition: newPosition }, { easing: 'sineOut' }) // 0.5 seconds, with easing
+                .start();
+        }
     }
+
+    SetRandomPositions(i: number) {
+        if (this.PieceSet == false) {
+            console.log("min: " + this.minX + " " + this.maxX + " y: " + this.minY + " " + this.maxY);
+            const newPosition = new Vec3(
+                this.randomFloatInRange(this.minX, this.maxX),
+                this.randomFloatInRange(this.minY, this.maxY),     // new random position for pieces
+                0
+            );
+
+            console.log("the new position for " + i + "th piece is: "+newPosition);
+
+            tween(this.node)
+                .to(0.2, { worldPosition: newPosition }, { easing: 'sineOut' }) // 0.5 seconds, with easing
+                .start();
+
+        }
+    }
+
+
+    randomFloatInRange(min: number, max: number): number {
+        return Math.random() * (max - min) + min;
+    }
+
+
     setScrollPosition(){
         
         const newPosition = this.PieceHolder.worldPosition // New position for the node (x, y, z)

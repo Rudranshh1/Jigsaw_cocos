@@ -9,10 +9,27 @@
       "outputName": "web-mobile",
       "mainBundleCompressionType": "merge_dep",
       "platform": "web-mobile",
-      "startScene": "fda6a7a5-cfbf-4f9c-b0be-eeb707175566"
+      "startScene": "fda6a7a5-cfbf-4f9c-b0be-eeb707175566",
+      "scenes": [
+        {
+          "url": "db://assets/Assets/Scenes/HomeScene.scene",
+          "uuid": "fda6a7a5-cfbf-4f9c-b0be-eeb707175566"
+        },
+        {
+          "url": "db://assets/Assets/Scenes/GameplayScene.scene",
+          "uuid": "0ef90f5b-6c07-4804-9d7e-f3cfb93d6916"
+        }
+      ],
+      "name": "JigsawRamayanCocos"
     },
     "taskOptionsMap": {
       "1747639775590": {
+        "useWebGPU": false,
+        "orientation": "auto",
+        "embedWebDebugger": false,
+        "__version__": "1.0.1"
+      },
+      "1748245272204": {
         "useWebGPU": false,
         "orientation": "auto",
         "embedWebDebugger": false,

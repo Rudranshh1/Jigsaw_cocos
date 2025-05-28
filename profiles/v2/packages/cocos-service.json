@@ -7,12 +7,14 @@
         "services": []
       },
       "android": {
-        "configID": "7c01cf",
-        "services": []
+        "configID": "e9405b",
+        "services": [],
+        "__version__": "3.0.9"
       },
       "web-mobile": {
-        "configID": "7c01cf",
-        "services": []
+        "configID": "e9405b",
+        "services": [],
+        "__version__": "3.0.9"
       }
     },
     "taskOptionsMap": {
@@ -29,12 +31,22 @@
       "1747639775590": {
         "configID": "7c01cf",
         "services": []
+      },
+      "1748245272204": {
+        "configID": "e9405b",
+        "services": [],
+        "__version__": "3.0.9"
+      },
+      "1748420603899": {
+        "configID": "e9405b",
+        "services": [],
+        "__version__": "3.0.9"
       }
     },
     "__version__": "1.3.9"
   },
   "builder-options": {
-    "configID": "7c01cf",
+    "configID": "e9405b",
     "services": [],
     "__version__": "3.0.9"
   }
